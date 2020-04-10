@@ -152,7 +152,7 @@ html, body {
 .NB_te_post_cont::-webkit-scrollbar-thumb:hover {
 	opacity: .5;
 }
-div[contenteditable=true] > div {
+div[contenteditable=true] > div, .NB_NoteBoard div {
 	display: block;
 }
 [contenteditable=true]:empty:before{
@@ -165,31 +165,31 @@ div[contenteditable=true]:before {
 	font-size: 20px;
 	line-height: 30px;
 }
-div[contenteditable=true] > * {
+div[contenteditable=true] > *, .NB_NoteBoard * {
 	white-space: normal;
 	word-break: keep-all;
 }
-div[contenteditable=true] > h1 {
+div[contenteditable=true] > h1, .NB_NoteBoard h1 {
 	font-size: 40px;
 	line-height: 80px;
 	margin: auto;
 }
-div[contenteditable=true] > h2 {
+div[contenteditable=true] > h2, .NB_NoteBoard h2 {
 	font-size: 34px;
 	line-height: 70px;
 	margin: auto;
 }
-div[contenteditable=true] > h3 {
+div[contenteditable=true] > h3, .NB_NoteBoard h3 {
 	font-size: 28px;
 	line-height: 60px;
 	margin: auto;
 }
-div[contenteditable=true] > h4 {
+div[contenteditable=true] > h4, .NB_NoteBoard h4 {
 	font-size: 24px;
 	line-height: 40px;
 	margin: auto;
 }
-div[contenteditable=true] > blockquote, .NB_te_quote {
+div[contenteditable=true] > blockquote, .NB_te_quote, .NB_NoteBoard blockquote {
 	display: block;
 	padding: 20px 30px;
 	box-sizing: border-box;
@@ -257,7 +257,7 @@ div[contenteditable=true] > blockquote, .NB_te_quote {
 	z-index: 1;
 	border-radius: 30px;
 }
-.NB_link_btn {
+.NB_link_btn, .NB_NoteBoard a {
 	position: relative;
 	display: inline-block;
 	color: #0071e3;
@@ -267,7 +267,7 @@ div[contenteditable=true] > blockquote, .NB_te_quote {
 	opacity: .8;
 	text-decoration: underline;
 }
-.NB_img_cont {
+.NB_img_cont, .NB_NoteBoard img {
 	position: relative;
 	display: block;
 	width: auto;
@@ -324,19 +324,19 @@ div[contenteditable=true] > blockquote, .NB_te_quote {
 		font-size: 16px;
 		line-height: 24px;
 	}
-	div[contenteditable=true] > h1 {
+	div[contenteditable=true] > h1, .NB_NoteBoard h1 {
 		font-size: 34px;
 		line-height: 60px;
 	}
-	div[contenteditable=true] > h2 {
+	div[contenteditable=true] > h2, .NB_NoteBoard h2 {
 		font-size: 28px;
 		line-height: 60px;
 	}
-	div[contenteditable=true] > h3 {
+	div[contenteditable=true] > h3, .NB_NoteBoard h3 {
 		font-size: 24px;
 		line-height: 40px;
 	}
-	div[contenteditable=true] > h4 {
+	div[contenteditable=true] > h4, .NB_NoteBoard h4 {
 		font-size: 20px;
 		line-height: 30px;
 	}

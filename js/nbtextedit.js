@@ -165,7 +165,12 @@ const NB_te_control_link = (eng=false)=> {
     if (eng) {
     	ph = 'Enter the link name.';
     }
-    Object.assign(content_div_input, {'type': 'text', 'max': 50, 'placeholder': ph});
+    Object.assign(content_div_input, {
+        'type': 'text', 
+        'max': 50, 
+        'placeholder': ph,
+        'autocomplete': 'off'
+    });
     content_div.append(content_div_text, content_div_input);
     link_cont_div.append(content_div);
     content_div_input.onblur = ()=> {     // Input Blur Eventbinding
@@ -186,7 +191,12 @@ const NB_te_control_link = (eng=false)=> {
     if (eng) {
     	ph = 'Enter the URL.';
     }
-    Object.assign(content_div_input, {'type': 'text', 'max': 1000, 'placeholder': ph});
+    Object.assign(content_div_input, {
+        'type': 'text', 
+        'max': 1000, 
+        'placeholder': ph,
+        'autocomplete': 'off'
+    });
     content_div.append(content_div_text, content_div_input);
     link_cont_div.append(content_div);
     content_div_input.onblur = ()=> {       // Input Blur Eventbinding
@@ -291,7 +301,7 @@ const NB_te_control_image = ()=> {
     selection.focusNode.after(img_cont);
 
     // 자원 낭비 방지를 위한 임시 코드
-    window.URL.revokeObjectURL(tempath);    // Rovoke Temporary Image URL
+    // window.URL.revokeObjectURL(tempath);    // Rovoke Temporary Image URL
 }
 
 // New NBnote
@@ -325,7 +335,8 @@ const NBnote = (color='#12b886', link=true, image=true, eng=false)=> {
     Object.assign(title_input, {
         'id': 'NB_te_title_input',
         'type': 'text',
-        'placeholder': titlePH
+        'placeholder': titlePH,
+        'autocomplete': 'off'
     });
     title_cont.append(title_input);
 
@@ -464,6 +475,7 @@ const NBnote = (color='#12b886', link=true, image=true, eng=false)=> {
 
     // Editor Post Container ==========================================
     let post_cont = document.createElement('div');
+    post_cont.id = "NB_te_post_cont";
     post_cont.classList.add('NB_te_post_cont');
     let postPH = "내용을 입력해주세요.";
     if (eng) {
@@ -485,4 +497,39 @@ const NBnote = (color='#12b886', link=true, image=true, eng=false)=> {
     editor_cont.append(post_cont);
 
     document.querySelector('#NB-texteditor').append(editor_cont);
+}
+
+// Get Data : Return FormData!
+const NBnoteData = (title=false, post=false, images=false)=> {
+    let output = new FormData();
+    
+    // Get Title
+    if (title) {
+        let getTitle = document.querySelector('#NB_te_title_input').value.trim();
+        if (getTitle == "") {
+            document.querySelector('#NB_te_title_input').focus();
+            return;
+        }
+        output.append('title', getTitle);
+    }
+
+    // Get Images
+    if (images) {
+        for (let img of NB_te_Img_files) {
+            console.log(img);
+            output.append('images', img, img['name']);
+        }
+    }
+
+    // Get Post
+    if (post) {
+        let getPost = document.querySelector('#NB_te_post_cont').innerHTML.trim();
+        if (getPost == "") {
+            document.querySelector('#NB_te_post_cont').focus();
+            return;
+        }
+        output.append('post', getPost);
+    }
+
+    return output;
 }
