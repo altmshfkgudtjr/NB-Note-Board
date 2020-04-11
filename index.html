@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
+<head style="position: relative;width: 100%;margin: 0;">
 	<title>NB-Text Editor v1.0</title>
 	<meta charset="utf-8">
 	<meta name="author" content="NB">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 	<link rel="icon" type="image/png" href="./image/NB.png">
 	<link rel="apple-touch-icon-precomposed" type="image/png" href="./image/NB.png">
+	<style type="text/css">
+		* {
+			word-break: keep-all;
+			font-family: 'AppleSdNeo', sandle-serif;
+		}
+	</style>
 </head>
 <link rel="stylesheet" type="text/css" href="./css/nbtextedit.css">
-<body>
+<body style="position: relative;width: 100%;margin: 0;">
 	<div id="NB-texteditor"></div>
 	<h5 style="display: block; text-align: center; font-weight: normal;">This is NB Texteditor Version 1.0</h5>
 	<h6 style="display: block; text-align: center; margin-top: 0;">The MIT License (MIT) © 2020. NB</h6>
@@ -25,7 +31,7 @@
 		color='#12b886',
 		link=true,
 		image=false,
-		eng=false
+		eng=true
 	);
 </script>
 </html>
