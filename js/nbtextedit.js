@@ -22,12 +22,12 @@ const NB_te_control_p = ()=> {
 }
 // H1 SIZE
 const NB_te_control_h1 = ()=> {
-	let selection = window.getSelection();
+    let selection = window.getSelection();
     if (selection.anchorNode == null) {
         return;
     }
     let range = selection.getRangeAt(0);
-	if (selection.anchorNode.parentNode.id != 'NB_te_post_cont'
+    if (selection.anchorNode.parentNode.id != 'NB_te_post_cont'
      && selection.anchorNode.parentNode.offsetParent.id != 'NB_te_post_cont') {
         return;
     }
@@ -163,7 +163,7 @@ const NB_te_control_link = (eng=false)=> {
     let content_div_input = document.createElement('input');
     let ph = '제목을 입력해주세요.';
     if (eng) {
-    	ph = 'Enter the link name.';
+        ph = 'Enter the link name.';
     }
     Object.assign(content_div_input, {
         'type': 'text', 
@@ -189,7 +189,7 @@ const NB_te_control_link = (eng=false)=> {
     content_div_input = document.createElement('input');
     ph = 'URL을 입력해주세요.';
     if (eng) {
-    	ph = 'Enter the URL.';
+        ph = 'Enter the URL.';
     }
     Object.assign(content_div_input, {
         'type': 'text', 
@@ -207,7 +207,7 @@ const NB_te_control_link = (eng=false)=> {
     link_btn.classList.add("NB_link_done_btn");
     let link_btn_lang = "확인";
     if (eng) {
-    	link_btn_lang = "Create";
+        link_btn_lang = "Create";
     }
     link_btn.textContent = link_btn_lang;
     link_cont_div.append(link_btn);
@@ -317,7 +317,7 @@ const NBnote = (color='#12b886', link=true, image=true, eng=false)=> {
         return elem;
     };
     // Color Setting
-    document.querySelector('#NB-texteditor').style.setProperty('--NBnote-color', color);
+    document.querySelector(':root').style.setProperty('--NBnote-color', color);
 
     // Editor Whole Container ========================================
     let editor_cont = document.createElement('div');
@@ -330,7 +330,7 @@ const NBnote = (color='#12b886', link=true, image=true, eng=false)=> {
     title_input.classList.add('NB_te_title_input');
     let titlePH = "제목을 입력해주세요.";
     if (eng) {
-    	titlePH = "Enter your title.";
+        titlePH = "Enter your title.";
     }
     Object.assign(title_input, {
         'id': 'NB_te_title_input',
@@ -479,7 +479,7 @@ const NBnote = (color='#12b886', link=true, image=true, eng=false)=> {
     post_cont.classList.add('NB_te_post_cont');
     let postPH = "내용을 입력해주세요.";
     if (eng) {
-    	postPH = "Enter your contents.";
+        postPH = "Enter your contents.";
     }
     post_cont.setAttribute('placeholder', postPH);
     Object.assign(post_cont, {
@@ -508,7 +508,7 @@ const NBnoteData = (title=false, post=false, images=false)=> {
         let getTitle = document.querySelector('#NB_te_title_input').value.trim();
         if (getTitle == "") {
             document.querySelector('#NB_te_title_input').focus();
-            return;
+            return "Error: title empty";
         }
         output.append('title', getTitle);
     }
@@ -516,20 +516,30 @@ const NBnoteData = (title=false, post=false, images=false)=> {
     // Get Images
     if (images) {
         for (let img of NB_te_Img_files) {
-            console.log(img);
             output.append('images', img, img['name']);
         }
-    }
+    }    
 
     // Get Post
     if (post) {
         let getPost = document.querySelector('#NB_te_post_cont').innerHTML.trim();
         if (getPost == "") {
             document.querySelector('#NB_te_post_cont').focus();
-            return;
+            return "Error: post empty";
         }
+        // Checking Post
+        let checking_box = document.createElement('div');
+        checking_box.id = "NB_hidden_post";
+        checking_box.classList.add("NB_display_none");
+        checking_box.innerHTML = getPost;
+        document.querySelector('body').append(checking_box);
+        for (let Node of document.querySelectorAll('a')) {
+            Node.removeAttribute('contentEditable');
+        }
+        getPost = document.querySelector('#NB_hidden_post').innerHTML.trim();
+        document.querySelector('#NB_hidden_post').remove();
+
         output.append('post', getPost);
     }
-
     return output;
 }

@@ -1,4 +1,4 @@
-# NB' Note-Board version 1.1
+# NB' Note-Board version 1.12
 
 ![Prototype](./image/image.png)
 
@@ -52,15 +52,15 @@
    );
    ```
 
-   - color : Just select that color you like.
+   - **color** : Just select that color you like.
 
-   - link : If you want insert link function, select 'true'.
+   - **link** : If you want insert link function, select 'true'.
 
-   - image : If you want insert image function, select 'true'.
+   - **image** : If you want insert image function, select 'true'.
 
      > I'm Sorry..😅  Image inserting is not supported not yet.
 
-   - eng : If you want to use by English, select 'true'.
+   - **eng** : If you want to use by English, select 'true'.
 
 
 
@@ -68,7 +68,7 @@
 
 #### How to get form data?
 
-- Use this function.
+- Use this **function**.
 
   ```javascript
   let your_data = NBnoteData(title=false, post=false, images=false);
@@ -76,9 +76,27 @@
 
   (title = false) is default, (post=false) is default, (images=false) is default.
 
-  This function will return FormData to you.
+  This function will return **FormData** to you.
+  
+- ❗**WARNING**❗
+  If you don't use this function, This editor's link tag may not work normally.
 
 
+
+
+
+#### How to view data?
+
+- If you add this **Class** to div you want, Editor Css is activated.
+
+  ```html
+  <!-- View Div -->
+  <div class="NB_NoteBoard">
+      
+  </div>
+  ```
+
+  
 
 
 
@@ -92,4 +110,4 @@ Any kinds of contributions are welecomed. Since the test codes of the project is
 
 
 
-###### 2020-04-11 xD
+###### 2020-04-12 xD

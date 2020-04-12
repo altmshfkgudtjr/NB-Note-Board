@@ -1,4 +1,4 @@
-#NB-texteditor {
+:root {
 	--NBnote-color: #12b886;
 }
 
@@ -32,6 +32,9 @@
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+}
+.NB_display_none {
+	display: none !important;
 }
 .NB_te_cont {
 	position: relative;
@@ -123,7 +126,7 @@
 	padding: 20px 10px;
 	transition: .1s ease-in-out;
 	-webkit-transition: .1s ease-in-out;
-	font-size: 20px;
+	font-size: 16px;
 	line-height: 30px;
 	word-break: keep-all;
 	white-space: pre;
